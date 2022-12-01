@@ -1,0 +1,20 @@
+body {
+    background: url(/static/profile_pics/Stadium.jpg) no-repeat center center fixed;
+    /* background: gainsboro no-repeat center center fixed; */
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.card{
+    margin-bottom:10px!important;
+    }
+
+
+.blog-lable{
+    background-color: transparent;
+    font-size: xx-large;
+    color:crimson;
+    font-weight: 500;
+}

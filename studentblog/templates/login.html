@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+    .login-form {
+        width: 340px;
+        margin: 50px auto;
+          font-size: 15px;
+    }
+    .login-form form {
+        margin-bottom: 15px;
+        background: #f7f7f7;
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+        padding: 30px;
+    }
+    .login-form h2 {
+        margin: 0 0 15px;
+    }
+    .form-control, .btn {
+        min-height: 38px;
+        border-radius: 2px;
+    }
+    .btn {        
+        font-size: 15px;
+        font-weight: bold;
+    }
+    </style>
+
+<!-- <form method="POST">
+    {# This hidden_tag is a CSRF security feature. #}
+    {{ form.hidden_tag() }}
+    {{ form.email.label }} {{ form.email() }}
+    {{ form.password.label }} {{ form.password() }}
+    {{ form.submit() }}
+</form> -->
+
+<div class="login-form">
+    <form method="POST">
+        {# This hidden_tag is a CSRF security feature. #}
+        {{ form.hidden_tag() }}
+
+        <h2 class="text-center">Log in</h2>       
+        <div class="form-group">
+            <!-- <input type="text" class="form-control" placeholder="Username" required="required"> -->
+            {{ form.email(class='form-control', type='email', placeholder='Email', required='required') }}
+        </div>
+        <div class="form-group">
+            <!-- <input type="password" class="form-control" placeholder="Password" required="required"> -->
+            {{ form.password(class='form-control', placeholder='Password', required='required') }}
+        </div>
+        <div class="form-group">
+            <!-- <button type="submit" class="btn btn-primary btn-block">Log in</button> -->
+            {{ form.submit(class='btn btn-primary btn-block') }}
+        </div>
+        <div class="clearfix">
+            <label class="float-left form-check-label"><input type="checkbox"> Remember me</label>
+            <a href="#" class="float-right">Forgot Password?</a>
+        </div>
+        <div class="form-group">           
+            {% if form.email.errors %}
+                <ul class="errors">
+                    {% for error in form.email.errors %}
+                       <li class="text-danger">{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            {% if form.password.errors %}
+                <ul class="errors">
+                    {% for error in form.password.errors %}
+                       <li class="text-danger">{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    </form>
+    <p class="text-center" style="background-color: gainsboro ;"><a href="{{ url_for('users.register') }}">Create an Account</a></p>
+</div>
+{% endblock %}
